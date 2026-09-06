@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SRALGO — Luxury Web Design</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #050505;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 24px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(5,5,5,.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      opacity: .7;
+      transition: .3s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 7% 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      filter: blur(110px);
+      right: -170px;
+      top: 130px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      opacity: .55;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      max-width: 950px;
+      font-size: clamp(55px, 10vw, 140px);
+      line-height: .88;
+      letter-spacing: -6px;
+      font-weight: 500;
+    }
+
+    h1 span {
+      color: #777;
+    }
+
+    .hero-text {
+      max-width: 520px;
+      margin-top: 45px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: #aaa;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 35px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 27px;
+      border: 1px solid #fff;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: .3s;
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: #000;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    section {
+      padding: 110px 7%;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #777;
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      font-size: clamp(40px, 7vw, 82px);
+      max-width: 850px;
+      line-height: 1;
+      font-weight: 500;
+      letter-spacing: -3px;
+    }
+
+    .about {
+      border-top: 1px solid #222;
+    }
+
+    .about-grid {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+    }
+
+    .about-grid p {
+      color: #aaa;
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .services {
+      border-top: 1px solid #222;
+    }
+
+    .service-list {
+      margin-top: 60px;
+    }
+
+    .service {
+      padding: 30px 0;
+      border-top: 1px solid #222;
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .service:last-child {
+      border-bottom: 1px solid #222;
+    }
+
+    .service-number {
+      color: #555;
+      font-size: 13px;
+    }
+
+    .service h3 {
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .service p {
+      color: #888;
+      line-height: 1.6;
+    }
+
+    .work {
+      border-top: 1px solid #222;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 25px;
+      margin-top: 60px;
+    }
+
+    .project {
+      min-height: 430px;
+      background:
+        linear-gradient(145deg,#141414,#070707);
+      border: 1px solid #1f1f1f;
+      padding: 35px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      transition: .4s;
+    }
+
+    .project::before {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.05);
+      filter: blur(45px);
+      top: 40px;
+      right: 30px;
+    }
+
+    .project:hover {
+      transform: translateY(-8px);
+      border-color: #444;
+    }
+
+    .project small {
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .project h3 {
+      font-size: 32px;
+      font-weight: 400;
+    }
+
+    .cta {
+      border-top: 1px solid #222;
+      text-align: center;
+      padding-top: 140px;
+      padding-bottom: 140px;
+    }
+
+    .cta h2 {
+      font-size: clamp(50px, 9vw, 110px);
+      line-height: .95;
+      font-weight: 500;
+      letter-spacing: -5px;
+    }
+
+    .cta p {
+      margin: 30px auto;
+      max-width: 550px;
+      color: #888;
+      line-height: 1.8;
+    }
+
+    footer {
+      border-top: 1px solid #222;
+      padding: 35px 7%;
+      display: flex;
+      justify-content: space-between;
+      color: #666;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 750px) {
+      nav {
+        padding: 20px 6%;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-left: 6%;
+        padding-right: 6%;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      section {
+        padding: 85px 6%;
+      }
+
+      .about-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service {
+        grid-template-columns: 45px 1fr;
+      }
+
+      .service p {
+        grid-column: 2;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#" class="logo">SRALGO</a>
+
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="hero">
+    <div class="glow"></div>
+
+    <div class="eyebrow">Independent Digital Studio</div>
+
+    <h1>
+      DIGITAL<br>
+      <span>EXPERIENCES</span><br>
+      THAT STAND OUT.
+    </h1>
+
+    <p class="hero-text">
+      SRALGO creates refined, high-converting websites and digital
+      experiences for ambitious brands that want to look unmistakably premium.
+    </p>
+
+    <div class="buttons">
+      <a href="#work" class="btn btn-primary">View Selected Work</a>
+      <a href="#contact" class="btn">Start a Project</a>
+    </div>
+  </section>
+
+
+  <section class="about" id="about">
+
+    <div class="section-label">01 — About</div>
+
+    <h2 class="section-title">
+      DESIGN WITH PURPOSE. BUILT TO BE REMEMBERED.
+    </h2>
+
+    <div class="about-grid">
+      <p>
+        SRALGO is a digital design studio focused on combining clean
+        aesthetics, strategic thinking and modern development to create
+        websites that feel sophisticated, intentional and effortless.
+      </p>
+
+      <p>
+        From initial direction to final launch, every detail is carefully
+        considered — typography, spacing, interaction and storytelling —
+        creating a digital presence that feels uniquely yours.
+      </p>
+    </div>
+
+  </section>
+
+
+  <section class="services" id="services">
+
+    <div class="section-label">02 — Services</div>
+
+    <h2 class="section-title">
+      EVERYTHING YOUR BRAND NEEDS TO MAKE AN IMPACT ONLINE.
+    </h2>
+
+    <div class="service-list">
+
+      <div class="service">
+        <div class="service-number">01</div>
+        <h3>Web Design</h3>
+        <p>Distinctive, responsive websites designed around your identity and business goals.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-number">02</div>
+        <h3>Web Development</h3>
+        <p>Fast, elegant and functional digital experiences built for modern devices.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-number">03</div>
+        <h3>Brand Direction</h3>
+        <p>Visual direction, typography and digital systems designed to create consistency.</p>
+      </div>
+
+      <div class="service">
+        <div class="service-number">04</div>
+        <h3>Landing Pages</h3>
+        <p>Conversion-focused landing pages for launches, campaigns and premium services.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="work" id="work">
+
+    <div class="section-label">03 — Selected Work</div>
+
+    <h2 class="section-title">
+      DIGITAL WORK CREATED FOR MODERN BRANDS.
+    </h2>
+
+    <div class="project-grid">
+
+      <div class="project">
+        <small>Luxury / Web Design</small>
+        <h3>Maison Élan</h3>
+      </div>
+
+      <div class="project">
+        <small>Architecture / Digital</small>
+        <h3>Atelier N°7</h3>
+      </div>
+
+      <div class="project">
+        <small>Fashion / E-commerce</small>
+        <h3>Noir Studio</h3>
+      </div>
+
+      <div class="project">
+        <small>Beauty / Branding</small>
+        <h3>Veloura</h3>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="cta" id="contact">
+
+    <div class="section-label">04 — Contact</div>
+
+    <h2>
+      HAVE A PROJECT<br>
+      IN MIND?
+    </h2>
+
+    <p>
+      Tell us about your brand, your vision and what you want to create.
+      Let's build something remarkable together.
+    </p>
+
+    <a
+      class="btn btn-primary"
+      href="mailto:hello@sralgo.com"
+    >
+      Start a Project
+    </a>
+
+  </section>
+
+</main>
+
+
+<footer>
+  <div>© 2026 SRALGO</div>
+  <div>Luxury Web Design & Digital Experiences</div>
+</footer>
+
+</body>
+</html>
